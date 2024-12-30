@@ -1,6 +1,7 @@
 import React from 'react';
 import './components/Courses/Videoplayer.css'
 import PriceCard from './components/PriceCard/PriceCard';
+import './VideoPlayer.css'
 
 interface VideoPlayerProps {
     videoUrl: string;
@@ -30,9 +31,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, title, price }) => 
                 />
 
             </div>
-            <div className='flex-col'>
-                <h2 className=" bg-blur p-6 rounded-lg shadow-md  text-xl text-white font-semibold mt-4 text-center">{title}</h2>
-                <span className='flex-class justify-center'>
+            <div className='video-title-price-cls'>
+                <h2 className="res-title bg-blur p-6 rounded-lg shadow-md text-xl text-white font-semibold mt-4 text-center">{title}</h2>
+                <span className='flex-class-card justify-center mt-4'>
                     <PriceCard
                         price={price.amount}
                         originalPrice={price.originalAmount}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { SignedIn, SignedOut, SignInButton, useUser } from "@clerk/clerk-react";
-
+import api from '../../API/index.js'
 interface Review {
     stars: number;
     comment: string;
@@ -27,8 +27,8 @@ const ReviewComponent: React.FC<ReviewComponentProps> = ({ courseId }) => {
 
     // Fetch reviews from the API
     useEffect(() => {
-        axios
-            .get(`/api/reviews/${courseId}`)
+        
+            api.get(`/api/reviews/${courseId}`)
             .then((response) => {
                 const data = Array.isArray(response.data) ? response.data : [];
                 setReviews(data);
@@ -49,8 +49,7 @@ const ReviewComponent: React.FC<ReviewComponentProps> = ({ courseId }) => {
             return;
         }
 
-        axios
-            .post("/api/reviews", {
+            api.post("/api/reviews", {
                 ...newReview,
                 username: user?.firstName || "Anonymous",
             })
